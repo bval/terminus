@@ -125,5 +125,4 @@ class ListCommandTest extends UpdatesCommandTest
         $out = $this->command->listUpstreamUpdates('123');
         $this->assertNull($out);
     }
-
 }
