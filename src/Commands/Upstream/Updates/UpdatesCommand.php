@@ -39,11 +39,6 @@ abstract class UpdatesCommand extends TerminusCommand implements SiteAwareInterf
      */
     protected function getUpstreamUpdatesLog($site)
     {
-        $upstream = $this->getUpstreamUpdates($site);
-
-        if (!empty($upstream->update_log)) {
-            return (array)$upstream->update_log;
-        }
-        return [];
+        return (array)$this->getUpstreamUpdates($site)->update_log;
     }
 }
