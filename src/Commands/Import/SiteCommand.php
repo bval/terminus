@@ -35,7 +35,9 @@ class SiteCommand extends TerminusCommand implements SiteAwareInterface
         list(, $env) = $this->getSiteEnv($site, 'dev');
         $workflow = $env->import($url);
         try {
-            $workflow->wait();
+            while (!$workflow->checkProgress()) {
+                // @TODO: Add Symfony progress bar to indicate that something is happening.
+            }
         } catch (\Exception $e) {
             if ($e->getMessage() == 'Successfully queued import_site') {
                 throw new TerminusException('Site import failed');
